@@ -349,6 +349,10 @@ def export_pytorch(
 
         config.patch_ops()
 
+        print("INPUTS", inputs)
+        # for key, value in inputs.items():
+        #     print(key, value.shape, value.device)
+
         # PyTorch deprecated the `enable_onnx_checker` and `use_external_data_format` arguments in v1.11,
         # so we check the torch version for backwards compatibility
         if is_torch_less_than_1_11:

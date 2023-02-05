@@ -47,6 +47,7 @@ PYTORCH_EXPORT_MODELS_TINY = {
     "deberta-v2": "hf-internal-testing/tiny-random-DebertaV2Model",
     "deit": "hf-internal-testing/tiny-random-DeiTModel",
     "convnext": "hf-internal-testing/tiny-random-convnext",
+    "deta": "nielsr/deta-resnet-50",
     "detr": "hf-internal-testing/tiny-random-detr",
     "distilbert": "hf-internal-testing/tiny-random-DistilBertModel",
     "electra": "hf-internal-testing/tiny-random-ElectraModel",
@@ -144,6 +145,7 @@ PYTORCH_EXPORT_MODELS_LARGE = {
     "deberta": "hf-internal-testing/tiny-random-DebertaModel",  # Not using microsoft/deberta-base because it takes too much time for testing.
     "deberta-v2": "hf-internal-testing/tiny-random-DebertaV2Model",  # Not using microsoft/deberta-v2-xlarge because it takes too much time for testing.
     "deit": "facebook/deit-small-patch16-224",
+    "deta": "nielsr/deta-resnet-50",
     "convnext": "facebook/convnext-tiny-224",
     "detr": "hf-internal-testing/tiny-random-detr",  # Not using facebook/detr-resnet-50 because it takes too much time for testing.
     "distilbert": "distilbert-base-cased",

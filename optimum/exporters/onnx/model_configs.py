@@ -515,14 +515,25 @@ class ResNetOnnxConfig(ViTOnnxConfig):
 class DetrOnnxConfig(ViTOnnxConfig):
     DEFAULT_ONNX_OPSET = 12
 
-    @property
-    def inputs(self) -> Mapping[str, Mapping[int, str]]:
-        # TODO: is pixel mask needed?
-        return {**super().inputs, "pixel_mask": {0: "batch_size"}}
-
 
 class YolosOnnxConfig(ViTOnnxConfig):
     DEFAULT_ONNX_OPSET = 12
+
+
+class DetaDummyInputGenerator(DummyVisionInputGenerator):
+    def generate(self, input_name: str, framework: str = "pt"):
+        from transformers import AutoImageProcessor
+
+        input_ = super().generate(input_name, framework)
+        # print("HERE", input_.shape)
+        image_processor = AutoImageProcessor.from_pretrained("nielsr/deta-resnet-50")
+        # print("HERE2", image_processor(images=list(input_), return_tensors=framework))
+        return image_processor(images=list(input_), return_tensors=framework)["pixel_values"]
+
+
+class DetaOnnxConfig(ViTOnnxConfig):
+    DEFAULT_ONNX_OPSET = 16
+    DUMMY_INPUT_GENERATOR_CLASSES = (DetaDummyInputGenerator,)
 
 
 class SwinOnnxConfig(ViTOnnxConfig):
